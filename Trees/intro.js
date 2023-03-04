@@ -45,7 +45,38 @@ function dfs(node){
     dfs(node.right);
     postorder += node.val+" ";
 }
-dfs(root);
-console.log(preorder);
-console.log(inorder);
-console.log(postorder);
+
+function displayTree(node){
+    if(node == null) return;
+
+    let myOutput = ""+node.val+": ";
+    //leftchild
+    if(node.left != null){
+        myOutput += node.left.val+", ";
+    }else myOutput+="-1, ";
+
+    //rightchild
+    if(node.right != null){
+        myOutput+=node.right.val+", ";
+    }else myOutput+="-1, ";
+    console.log(myOutput);
+
+    displayTree(node.left);
+    displayTree(node.right);
+}
+
+
+// displayTree(root);
+
+function getSize(node){
+    if(node == null) return 0;
+    let leftSubtreeSize = getSize(node.left);
+    let rightSubtreeSize = getSize(node.right);
+    return leftSubtreeSize +rightSubtreeSize + 1;
+}
+let sizeOfTree = getSize(root);
+console.log(sizeOfTree);
+// dfs(root);
+// console.log(preorder);
+// console.log(inorder);
+// console.log(postorder);
