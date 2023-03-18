@@ -83,6 +83,7 @@ class LinkedList{
         this.size--;
         return res;
     }
+    
 }
 
 let list = new LinkedList([]);
